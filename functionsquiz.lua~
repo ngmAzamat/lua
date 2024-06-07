@@ -1,0 +1,66 @@
+local json = require("dkjson")
+
+function GetQuestionList(json_file_name)
+	local file = io.open(json_file_name, "r")
+	local data = file:read("*all")
+	file:close()
+
+	local jsonData, pos, err = json.decode(data, 1, nil)
+	
+	if err then
+		print("Error:", err)
+		return nil
+	end
+	
+	return jsonData
+end
+
+
+function green(message)
+	print("\27[32m")
+	print(message)
+	print("\27[0m")
+end
+
+function red(message)
+	print("\27[31m")
+	print(message)
+	print("\27[0m")
+end
+
+
+function question(question, options, answer)
+	green("\nQuestion : " .. question .. "\n")
+	
+	for key, value in pairs(options) do
+		print("\t" .. key .. ") " .. value)
+	end
+
+	local choice = io.read("*n")
+
+	if choice == answer then
+		green("OK")
+		return true
+	else
+		red("ERR")
+		return false
+	end
+
+end
+
+function RunQuiz(json_file_name)
+	local questionlist = GetQuestionList(json_file_name)
+	
+	for key, value in pairs(questionlist) do
+		local result = question(value.question, value.options, value.answer)
+	end
+
+
+	return 0
+end
+
+
+
+
+
+
