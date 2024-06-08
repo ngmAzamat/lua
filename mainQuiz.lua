@@ -1,5 +1,5 @@
 require("functionsquiz")
 json_file = "quiz.json"
 result = RunQuiz(json_file)
-print("your result is : "..result)
+print("your result is : "..math.floor(result))
 

@@ -37,6 +37,8 @@ function question(question, options, answer)
 	end
 
 	local choice = io.read("*n")
+	-- print(type(choice))
+	-- print(type(answer))
 
 	if choice == answer then
 		green("OK")
@@ -50,20 +52,22 @@ end
 
 function RunQuiz(json_file_name)
 	local counter = 0
+		
 	local questionlist = GetQuestionList(json_file_name)
 	
 	for key, value in pairs(questionlist) do
-		local result = question(value.question, value.options, value.answer)
-		if result == true then
+		 result = question(value.question, value.options, value.answer)
+		if result then
 			counter = counter + 1
 		end
 	end
 
 
-
-	return counter
+	local number_of_question = #questionlist
+	local result = counter / number_of_question * 100 
+	
+	return result
 end
-
 
 
 
