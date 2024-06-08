@@ -64,8 +64,7 @@ function RunQuiz(json_file_name)
 
 
 	local number_of_question = #questionlist
-	local hundried = 100
-	local result = counter / number_of_question * hundried 
+	local result = counter / number_of_question * 100 
 	
 	return result
 end
