@@ -29,6 +29,17 @@ function red(message)
 end
 
 
+
+
+
+
+
+
+
+
+
+
+
 function question(question, options, answer)
 	green("\nQuestion : " .. question .. "\n")
 	
@@ -49,6 +60,28 @@ function question(question, options, answer)
 	end
 
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function RunQuiz(json_file_name)
 	local counter = 0
